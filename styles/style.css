@@ -1,0 +1,153 @@
+/*==== GLOBAL ====*/
+:root {
+    --background: lightgray;
+    --light-text: #f2f4f6;
+    --dark-text: #363f5f;
+    --light-background: lavender;
+    --card-total-background: #49aa26;
+    --table-text: lightslategrey;
+    --red-text: #8d0d0d;
+    --green-text: #059244;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--background);
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/*==== HEADER ====*/
+header {
+    background: #2d4a22;
+    padding: 2rem 0 10rem;
+    text-align: center;
+    color: var(--light-text);
+}
+
+#logo {
+    color: var(--light-text);
+    font-weight: 100;
+    font-size: 3.2rem;
+}
+
+/*==== MAIN ====*/
+.container {
+    width: min(90vw, 800px);
+    margin: auto;
+}
+
+h2 {
+    margin-top: 3.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--dark-text);
+    font-weight: normal;
+}
+
+/*==== BALANCE ====*/
+#balance {
+    margin-top: -8rem;
+}
+
+#balance h2 {
+    color: var(--light-text);
+    margin-top: 0;
+}
+
+/*==== CARD ====*/
+.card {
+    background: var(--light-background);
+    padding: 1.6rem 2.4rem;
+    margin-bottom: 2.4rem;
+    border-radius: 0.40rem;
+    color: var(--dark-title);
+}
+
+.card h3 {
+    /*font-weight: normal;*/
+    font-size: 0.8rem;
+    color: var(--table-text);
+}
+
+.card p {
+    margin-top: 0.8rem;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+}
+
+.card.total {
+    background: var(--card-total-background);
+    color: var(--light-text);
+}
+
+.card.total h3 {
+    color: var(--light-text);
+}
+
+/*==== TABLE ====*/
+#data-table {
+    width: 100%;
+    border-spacing: 0 0.16rem;
+    color: var(--table-text);
+}
+
+#data-table th {
+    background: var(--light-background);
+    padding: 0.8rem 1.6rem;
+    /*font-weight: normal;*/
+    text-align: left;
+}
+
+#data-table td {
+    background: var(--light-background);
+    padding: 0.48rem 0.8rem;
+}
+
+#data-table tbody tr {
+    opacity: 1;
+}
+
+#data-table tbody tr:hover {
+    opacity: 0.7;
+}
+
+#data-table td.description {
+    color: var(--dark-text);
+}
+
+#data-table td.expense {
+    color: var(--red-text);
+}
+
+#data-table td.revenue {
+    color: var(--green-text);
+}
+
+#data-table thead tr th:first-child {
+    border-radius: 0.40rem 0 0 0;
+}
+
+#data-table thead tr th:last-child {
+    border-radius: 0 0.40rem 0 0;
+}
+
+#data-table tbody tr:last-child td:first-child {
+    border-radius: 0 0 0 0.40rem;
+}
+
+#data-table tbody tr:last-child td:last-child {
+    border-radius: 0 0 0.40rem 0;
+}
+
+/*==== FOOTER ====*/
+footer{
+    padding: 4rem 0 2.4rem;
+    text-align: center;
+    color: var(--dark-text);
+    opacity: 0.6;
+}
