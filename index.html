@@ -98,7 +98,7 @@
 
     <div class="modal-overlay active">
         <div class="modal-content">
-            <div class="form">
+            <div id="form">
                 <h2>New Transaction</h2>
                 <form action="">
                     <div class="input-group">
@@ -119,6 +119,21 @@
                             name="amount"
                             placeholder="0.00"
                         />
+                        <small>
+                            Use (-) for expenses and (.) to decimal separator.
+                        </small>
+                    </div>
+                    <div class="input-group">
+                        <label class="sr-only" for="date">Date</label>
+                        <input 
+                            type="date"
+                            id="date"
+                            name="date"
+                        />
+                    </div>
+                    <div class="input-group form-buttons">
+                        <a href="#" class="button cancel">Cancel</a>
+                        <button type="submit">Save</button>
                     </div>
                 </form>
 
