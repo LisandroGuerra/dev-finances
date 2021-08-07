@@ -1,6 +1,7 @@
 /*==== GLOBAL ====*/
 :root {
     --background: lightgray;
+    --header-background: #2d4a22;
     --light-text: #f2f4f6;
     --dark-text: #363f5f;
     --light-background: lavender;
@@ -8,12 +9,17 @@
     --table-text: lightslategrey;
     --red-text: #8d0d0d;
     --green-text: #059244;
+    --green-text-light: #52b92c;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    font-size: 0.9375rem;
 }
 
 body {
@@ -24,7 +30,7 @@ body {
 
 /*==== HEADER ====*/
 header {
-    background: #2d4a22;
+    background: var(--header-background);
     padding: 2rem 0 10rem;
     text-align: center;
     color: var(--light-text);
@@ -49,6 +55,19 @@ h2 {
     font-weight: normal;
 }
 
+/*Visible to screen readers only*/
+.sr-only {
+    padding: 0;
+    margin: -1px;
+    width: 1px;
+    height: 1px;
+    border-width: 0;
+    position: absolute;
+    overflow: hidden;
+    white-space: nowrap;
+    clip: rect(0, 0, 0, 0);
+    }
+
 /*==== BALANCE ====*/
 #balance {
     margin-top: -8rem;
@@ -72,6 +91,9 @@ h2 {
     /*font-weight: normal;*/
     font-size: 0.8rem;
     color: var(--table-text);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .card p {
@@ -89,11 +111,34 @@ h2 {
     color: var(--light-text);
 }
 
+/*==== TRANSACTIONS ====*/
+#transactions {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+}
+
+/*==== BUTTON ====*/
+a {
+    color: var(--green-text);
+    text-decoration: none;
+}
+
+a:hover{
+    color: var(--green-text-light);
+}
+
+.button.new {
+    display: inline-block;
+    margin-bottom: 0.8rem;
+}
+
 /*==== TABLE ====*/
 #data-table {
     width: 100%;
     border-spacing: 0 0.16rem;
     color: var(--table-text);
+    
 }
 
 #data-table th {
@@ -144,10 +189,49 @@ h2 {
     border-radius: 0 0 0.40rem 0;
 }
 
+/*==== MODAL ====*/
+.modal-overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: var(--light-background);
+    padding: 2.4rem;
+}
+
 /*==== FOOTER ====*/
-footer{
+footer {
     padding: 4rem 0 2.4rem;
     text-align: center;
     color: var(--dark-text);
     opacity: 0.6;
+}
+
+/*==== RESPONSIVE ====*/
+@media (min-width: 800px) {
+    html {
+        font-size: 0.875rem;
+    }
+
+    #balance {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 2.4rem;
+    }
 }
