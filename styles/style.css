@@ -139,6 +139,7 @@ button {
     background: var(--button-green);
     color: var(--light-text);
     cursor: pointer;
+    font-family: 'Poppins', sans-serif;
 }
 
 button:hover {
