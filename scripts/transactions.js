@@ -2,38 +2,53 @@ const transactions = [
     {
         id: 1,
         description: "Energy",
-        amount: -50000,
+        amount: -50010,
         date: "23/01/2021"
     },
     {
         id: 2,
         description: "Free lance work",
-        amount: 500000,
+        amount: 500020,
         date: "24/01/2021"
     },
     {
         id: 3,
         description: "Internet service",
-        amount: -20000,
+        amount: -20030,
         date: "25/01/2021"
     },
     {
         id: 4,
         description: "Consulting service",
-        amount: 400000,
+        amount: 200040,
         date: "26/01/2021"
     }
 ]
 
 const Transaction = {
     revenues() {
+        let revenues = 0;
+        transactions.forEach(transaction => {
+            if (transaction.amount > 0) {
+                revenues += transaction.amount
+            }
+        })
 
+        return revenues
     },
+
     expenses(){
-
+        let expenses = 0;
+        transactions.forEach(transaction => {
+            if (transaction.amount < 0) {
+                expenses += transaction.amount
+            }
+        })
+        return expenses
     },
-    total(){
 
+    total(){
+        return this.revenues() + this.expenses()
     }
 }
 
@@ -50,7 +65,7 @@ const table = {
     innerHTMLTransaction(transaction) {
         const CSSclass = transaction.amount > 0 ? "revenue" : "expense"
 
-        const amount = Utils.formatCurrency(transaction.amount)
+        const amount = utils.formatCurrency(transaction.amount)
 
         const row = `
             <td class="description">${transaction.description}</td>
@@ -64,7 +79,23 @@ const table = {
     }
 }
 
-const Utils = {
+const balance = {
+    updateBalance() {
+        document
+            .getElementById('balanceRevenue')
+            .innerHTML = utils.formatCurrency(Transaction.revenues())
+
+        document
+            .getElementById('balanceExpense')
+            .innerHTML = utils.formatCurrency(Transaction.expenses())
+
+        document
+            .getElementById('balanceTotal')
+            .innerHTML = utils.formatCurrency(Transaction.total())
+    }
+}
+
+const utils = {
     formatCurrency(value) {
         return (Number(value) / 100)
             .toLocaleString("en", {
@@ -76,5 +107,6 @@ const Utils = {
 
 transactions.forEach(transaction => {
     table.addTransaction(transaction)
+    balance.updateBalance()
 });
 
