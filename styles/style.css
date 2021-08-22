@@ -292,6 +292,17 @@ button:hover {
     width: 40%;
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none;
+  -moz-appearance:textfield;
+  margin: 0; 
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
 /*==== FOOTER ====*/
 footer {
     padding: 4rem 0 2.4rem;
