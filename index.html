@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/favicon.ico" />
     <link rel="stylesheet" href="styles/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -81,7 +82,7 @@
         <div class="modal-content">
             <div id="form">
                 <h2>New Transaction</h2>
-                <form action="">
+                <form action="" onsubmit="Form.submit(event)">
                     <div class="input-group">
                         <label class="sr-only" for="description">Description</label>
                         <input 
@@ -98,10 +99,10 @@
                             step="0.01"
                             id="amount"
                             name="amount"
-                            placeholder="0.00"
+                            placeholder="0,00"
                         />
                         <small>
-                            Use (-) for expenses and (.) to decimal separator.
+                            Use (-) for expenses and (,) to decimal separator.
                         </small>
                     </div>
                     <div class="input-group">
