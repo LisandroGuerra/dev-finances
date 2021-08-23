@@ -1,10 +1,29 @@
+const Utils = {
+    formatAmount(amount) {
+        return Number(amount) * 100
+    },
+
+    formatDate(date) {
+        date = new Date(date)
+        return date.toLocaleDateString('fr', {timeZone: 'UTC'})
+    },
+
+    formatCurrency(value) {
+        return (Number(value) / 100)
+            .toLocaleString("fr", {
+                style: "currency",
+                currency: "EUR"
+            })
+    }
+}
+
 const Storage = {
     get() {
-        return JSON.parse(localStorage.getItem("transactions"))  || []
+        return JSON.parse(localStorage.getItem("dev.finaces"))  || []
     },
 
     set(transactions) {
-        localStorage.setItem("transactions", 
+        localStorage.setItem("dev.finances", 
         JSON.stringify(transactions))
     }
 }
@@ -97,25 +116,6 @@ const Table = {
     }
 }
 
-const Utils = {
-    formatAmount(amount) {
-        return Number(amount) * 100
-    },
-
-    formatDate(date) {
-        date = new Date(date)
-        return date.toLocaleDateString('pt', {timeZone: 'UTC'})
-    },
-
-    formatCurrency(value) {
-        return (Number(value) / 100)
-            .toLocaleString("ger", {
-                style: "currency",
-                currency: "EUR"
-            })
-    }
-}
-
 const Form = {
     description: document.querySelector('#description'),
     amount: document.querySelector('#amount'),
@@ -188,8 +188,8 @@ const Form = {
 
 const App = {
     init() {
-        Transaction.all.forEach(transaction => {
-            Table.addTransaction(transaction)
+        Transaction.all.forEach((transaction, index) => {
+            Table.addTransaction(transaction, index)
         })
 
         Balance.updateBalance()
