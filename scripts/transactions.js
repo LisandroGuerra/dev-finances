@@ -1,28 +1,16 @@
-const transactions = [
-    {        
-        description: "Energy",
-        amount: -50010,
-        date: "23/01/2021"
+const Storage = {
+    get() {
+        return JSON.parse(localStorage.getItem("transactions"))  || []
     },
-    {
-        description: "Free lance work",
-        amount: 500020,
-        date: "24/01/2021"
-    },
-    {
-        description: "Internet service",
-        amount: -20030,
-        date: "25/01/2021"
-    },
-    {
-        description: "Consulting service",
-        amount: 200040,
-        date: "26/01/2021"
+
+    set(transactions) {
+        localStorage.setItem("transactions", 
+        JSON.stringify(transactions))
     }
-]
+}
 
 const Transaction = {
-    all: transactions,
+    all: Storage.get(),
 
     add(transaction) {
         Transaction.all.push(transaction)
@@ -205,6 +193,8 @@ const App = {
         })
 
         Balance.updateBalance()
+
+        Storage.set(Transaction.all)
     },
 
     reload(){
